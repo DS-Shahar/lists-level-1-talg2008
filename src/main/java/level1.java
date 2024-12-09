@@ -99,45 +99,44 @@ public class level1 {
         }
         return false;
     }
-    public static void main(String[] args) {
 
-        // Test exe1: Create a linked list from an array
-        int[] array = {10, 15, 20, 25, 30};
-        Node<Integer> listFromArray = level1.exe1(array);
-        System.out.println("List created from array (exe1):");
-        level1.exe2A(listFromArray); // Iteratively print the list
+    public static Node<Integer>exe6(int num, Node<Integer>L)
+	{
+		Node <Integer> p=L;
+		if(p.getValue()==num)
+		{
+			return p.getNext();
+		}
+		while(p.hasNext())
+		{
+			if(p.getNext().getValue()==num)
+			{
+				p.setNext(p.getNext().getNext());
+				return L;
+			}
+		}
+		return L;
+	}
+	
+	 public static Node<Integer> exe7(int x,Node<Integer> head) {
+	        
 
-        // Test exe2B: Print list from end to start (recursively)
-        System.out.println("\nList from end to start (exe2B):");
-        level1.exe2B(listFromArray);
+	        if (x == 1) {
+	        	return head.getNext();
+	        }
 
-        // Test exe2A: Iteratively print the list
-        System.out.println("\nIterative print (exe2A):");
-        level1.exe2A(listFromArray);
+	        Node<Integer> current = head;
+	        for (int i = 1; current.getNext() != null && i < x - 1; i++) {
+	            current = current.getNext();
+	        }
 
-        // Test exe4: Print even numbers in the list
-        System.out.println("\nEven numbers in the list (exe4):");
-        level1.exe4(listFromArray);
+	        if (current.getNext() != null) {
+	            current.setNext(current.getNext().getNext());  // קישור לחוליה שאחריה
+	        }
 
-        // Test exe3: Create a list by user input
-        System.out.println("\nEnter values to create a list (exe3):");
-        Node<Integer> userInputList = level1.exe3();
-        System.out.println("List created from user input:");
-        level1.exe2A(userInputList);
-
-        // Test exe5B: Recursively check if a value exists in the list
-        System.out.println("\nEnter a number to check if it's in the list (exe5B):");
-        int target = reader.nextInt();
-        boolean foundRecursive = level1.exe5B(listFromArray, target);
-        System.out.println("Is the number in the list? " + foundRecursive);
-
-        // Test exe5A: Iteratively check if a value exists in the list
-        System.out.println("\nEnter a number to check if it's in the list (exe5A):");
-        target = reader.nextInt();
-        boolean foundIterative = level1.exe5A(listFromArray, target);
-        System.out.println("Is the number in the list? " + foundIterative);
-
-    }
+	        return head;
+	    }
+    
 }
 
 
